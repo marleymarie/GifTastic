@@ -31,7 +31,7 @@
     <form class="form-inline" id="search-form">
         <label for="search-input">Search Here</label><br>
         <input type="text" id="search-input"><br>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" kpop-stars ="search-input">Submit</button>
     </form>
   
    
@@ -42,6 +42,19 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
+
+  //I TRIED USING THE VARIABLE/ARRAY WITH A FUNCTION AND FOR LOOP TO APPEND A BUTTON ONTO MY ARRAYS
+  //NOT SURE IF I DONT QUITE UNDERSTAND IT OR THE SYNTAX IS WRONG
+
+  // var topics = ["BlackPink", "Bts", "BigBang", "Twice", "Exo", "Seventeen", "Kard"]
+  // function ButtonAppear (topics){
+  //   for (var i = 0; i < topics.length; i++) {
+  //      var a = $('<button>');
+  //      var topicsL = (topics[i]);
+  //      $(a).append(topicsL); }};
+    
+
+  
     
     $("button").on("click", function() {
       
@@ -92,8 +105,26 @@
 
 
         });
-    });
 
+        
+    });
+    
+    //THIS BUTTON WAS FOR MY SEARCH INPUT BUTTON. WHENEVER YOU INPUT A NEW SEARCH I THOUGHT IT WOULD 
+    //POPULATE A NEW BUTTON FOR THAT SEARCH AND ADD A GIF FOR IT
+    //I TRIED CONSOLE LOGGING BUT THAT DIDNT WORK. 
+
+    //$("button").on("click", function() {
+      
+      //var person = $(this).attr("kpop-Stars");
+          //kpop-stars.push("search-input")
+      
+      //var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+        //person + "&api_key=rpVwPz7dVx2pVeFP0tFA2BdIahtvlLht&limit=10";
+
+      // $.ajax({
+      //  url: queryURL,
+      //  method: "GET"
+      //})
 
   </script>
 </body>
