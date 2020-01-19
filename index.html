@@ -1,27 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>GifTastic</title>
+  <meta charset="utf-8">
+  <title>GifTastic Baby!</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
+
 <body>
+    <div class="jumbotron">
+        <h1 class="display">KPOP GIPHY!!!!!</h1></div>
 
-<script type="text/javascript">
+  <button kpop-Stars="BlackPink">BlackPink</button>
+  
+  <button kpop-Stars="Bts">Bts</button>
 
-//create an array for animals or whatever your gifs will be about
+  <button kpop-Stars="BigBang">BigBang</button>
+  
+  <button kpop-Stars="MonstaX">MonstaX</button>
 
-//need a for loop for each animal to have a button
+  <button kpop-Stars="Twice">Twice</button>
+  
+  <button kpop-Stars="Exo">Exo</button>
+  
+  <button kpop-Stars="Seventeen">Seventeen</button>
+  
+  <button kpop-Stars="Kard">Kard</button>
 
-//when you press the button it needs to generate  non static gifs of that animal
+  <div class="SearchBox">
+    <form class="form-inline" id="search-form">
+        <label for="search-input">Search Here</label><br>
+        <input type="text" id="search-input"><br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  
+   
 
-//when you press that gif thats when it should animate 
-
-//make the page mobile responsive
-
+  <div id="giphiesHere">
+  </div>
 
 
-</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    
+    $("button").on("click", function() {
+      
+      var person = $(this).attr("kpop-Stars");
+
+      
+      var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+        person + "&api_key=rpVwPz7dVx2pVeFP0tFA2BdIahtvlLht&limit=10";
+
+      // AJAX GET request
+      $.ajax({
+        url: queryURL,
+        method: "GET"
+      })
+        
+        .then(function(response) {
+          // Storing an array of outcome in the outcome variable
+          var outcome = response.data;
+
+          // Looping over every result item
+          for (var i = 0; i < outcome.length; i++) {
+
+            
+            outcome[i].rating  
+            
+              var giphy = $("<div>");
+
+              
+              var rating = outcome[i].rating;
+
+            
+              var p = $("<p>").text("Rating: " + rating);
+
+              
+              var personImage = $("<img>");
+
+            
+              personImage.attr("src", outcome[i].images.fixed_height.url);
+
+              // using the append method for the new image and paragraph tag
+              giphy.append(p);
+              giphy.append(personImage);
+
+              
+              $("#giphiesHere").prepend(giphy);
+            
+          }
+
+
+        });
+    });
+
+
+  </script>
 </body>
+
 </html>
